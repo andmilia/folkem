@@ -10,6 +10,19 @@
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="assets/icon-192.png">
 <link rel="apple-touch-icon" href="assets/icon-192.png">
+<!-- Anteprima social (Facebook, WhatsApp, Telegram, Twitter): serve URL ASSOLUTO,
+     i social non risolvono i path relativi. Mostra l'icona delle Maschere. -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Folk 'Em — La Locanda delle Maschere">
+<meta property="og:description" content="Gioco di carte 1v1 con le Maschere della Commedia dell'Arte e il mazzo napoletano. Attacco, difesa ed evocazioni in stile Texas Hold'em.">
+<meta property="og:image" content="https://andmilia.github.io/folkem/assets/icon-512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:url" content="https://andmilia.github.io/folkem/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Folk 'Em — La Locanda delle Maschere">
+<meta name="twitter:description" content="Gioco di carte 1v1 con le Maschere della Commedia dell'Arte e il mazzo napoletano.">
+<meta name="twitter:image" content="https://andmilia.github.io/folkem/assets/icon-512.png">
 <title>Folk 'Em</title>
 <style>
 :root{
@@ -3472,28 +3485,45 @@ const GameLogic = (() => {
     let run=1; for(let i=1;i<rs.length;i++){ run = rs[i]===rs[i-1]+1 ? run+1 : 1; if(run>=4) return true; }
     return false;
   }
+  // Conta le carte per seme e ritorna {suit, n} del seme più frequente.
+  function _topSuit(cards){
+    const bySuit={}; for(const c of cards){ bySuit[c.suit]=(bySuit[c.suit]||0)+1; }
+    let best=null,bn=0; for(const s in bySuit){ if(bySuit[s]>bn){bn=bySuit[s];best=s;} }
+    return {suit:best, n:bn};
+  }
   function aiSwapPlan(state, difficulty){
     const P=AI_PARAMS[difficulty]||AI_PARAMS.medium;
     const ai=state.ai, foe=state.me, community4=state.community.slice(0,4);
     const six=ai.hand.concat(community4);
     const ev4=evaluate(six);
-    // se ho già almeno una coppia, o un progetto di colore/scala, NON cambio: sto costruendo.
-    if(ev4.rankIndex>0 || _hasDraw(six)) return -1;
-    if(P.swapSmart){
-      // solo carta alta pura e senza progetti: cambio la carta più bassa della mano che
-      // non aiuta alcun progetto, con buon margine di PV (lo swap costa 10).
-      if(ai.hp>55 && ai.hp<foe.hp+60){
-        // se una delle due carte di mano è dello stesso seme di 3+ comuni, tienila (mezzo
-        // progetto colore); altrimenti scarta la più bassa.
-        const suitCount={}; for(const c of community4){ suitCount[c.suit]=(suitCount[c.suit]||0)+1; }
-        const keepBySuit = i => (suitCount[ai.hand[i].suit]||0)>=3;
-        if(keepBySuit(0)&&!keepBySuit(1)) return 1;
-        if(keepBySuit(1)&&!keepBySuit(0)) return 0;
-        return ai.hand[0].r<=ai.hand[1].r?0:1;
-      }
+    // Se ho già una combinazione fatta (coppia o meglio) NON cambio: buttare 10 PV su una
+    // mano che vale già qualcosa è uno spreco.
+    if(ev4.rankIndex>0) return -1;
+    if(!P.swapSmart){
+      // livelli non-smart: comportamento leggero di ripiego (raro, il rumore fa il resto)
+      if(ai.hp>40 && ai.hp<foe.hp+40 && Math.random()<0.25) return ai.hand[0].r<=ai.hand[1].r?0:1;
       return -1;
     }
-    if(ai.hp>40 && ai.hp<foe.hp+40 && Math.random()<(difficulty==='easy'?0.25:0.6)) return ai.hand[0].r<=ai.hand[1].r?0:1;
+    // Serve margine di PV: lo swap costa 10, non lo faccio se sto messo male o già in vantaggio.
+    if(ai.hp<=55 || ai.hp>=foe.hp+60) return -1;
+
+    // VALORE ATTESO DELLO SWAP: cambio solo se il guadagno probabile supera i 10 PV.
+    // Il caso che quasi sempre li supera è il PROGETTO COLORE: 4 carte dello stesso seme
+    // (contando mano + 4 comuni), a cui manca la 5ª. Cambiando la carta spaiata, ho una
+    // buona probabilità di completare il Colore (Arlecchino 30/15) con la carta pescata o
+    // con la 5ª comune. Fuori da questo caso, un cambio "alla cieca" rende in media meno
+    // di 10 PV, quindi NON conviene.
+    const top=_topSuit(six);
+    if(top.n>=4){
+      // ho 4 dello stesso seme: cambio la carta di mano che NON è di quel seme (la spaiata),
+      // per tentare il colore. Se entrambe sono del seme buono, non serve cambiare.
+      const h0Suit = ai.hand[0].suit===top.suit;
+      const h1Suit = ai.hand[1].suit===top.suit;
+      if(h0Suit && !h1Suit) return 1;
+      if(h1Suit && !h0Suit) return 0;
+      return -1;   // entrambe del seme (o nessuna in mano): niente da cambiare
+    }
+    // Nessun progetto colore: il guadagno atteso di un cambio non ripaga i 10 PV. Non cambio.
     return -1;
   }
 
@@ -4672,8 +4702,16 @@ const I18N = {
   }
 };
 
-const APP_VERSION="1.4.7";
+const APP_VERSION="1.4.9";
 const CHANGELOG=[
+  {v:"1.4.9", it:[
+    "Quando si condivide il link del gioco (Facebook, WhatsApp, Telegram…), l anteprima ora mostra l icona delle Maschere invece di un immagine casuale della pagina. Aggiunti i tag social (Open Graph) mancanti."],
+   en:[
+    "When sharing the game link (Facebook, WhatsApp, Telegram…), the preview now shows the Masks icon instead of a random image from the page. Added the missing social (Open Graph) tags."]},
+  {v:"1.4.8", it:[
+    "IA: ora cambia carta solo quando conviene davvero. Il cambio costa 10 PV, quindi l IA lo fa solo se il guadagno atteso li supera — in pratica solo per completare un Colore (4 carte dello stesso seme in attesa della quinta). In tutti gli altri casi tiene le carte, invece di spendere 10 PV su una mano che potrebbe non migliorare abbastanza."],
+   en:[
+    "AI: now swaps a card only when it is genuinely worth it. The swap costs 10 HP, so the AI does it only when the expected gain beats that — in practice only to complete a Flush (4 cards of the same suit waiting for the fifth). In every other case it keeps its cards, instead of spending 10 HP on a hand that might not improve enough."]},
   {v:"1.4.7", it:[
     "Rifinitura: quando la cura è azzerata dalle cure consecutive (0%) e si sceglie Difesa, non parte più l animazione di guarigione (bagliore, suono, caraffa): la mano vince comunque il confronto, ma non viene mostrato alcun effetto curativo che in realtà non c è stato. Resta solo la scritta che avvisa che la cura non ha avuto effetto."],
    en:[

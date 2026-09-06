@@ -1,5 +1,13 @@
 # Diario di bordo — Folk Em
 
+## 1.4.9
+
+- Quando si condivide il link del gioco (Facebook, WhatsApp, Telegram…), l anteprima ora mostra l icona delle Maschere invece di un immagine casuale della pagina. Aggiunti i tag social (Open Graph) mancanti.
+
+## 1.4.8
+
+- IA: ora cambia carta solo quando conviene davvero. Il cambio costa 10 PV, quindi l IA lo fa solo se il guadagno atteso li supera — in pratica solo per completare un Colore (4 carte dello stesso seme in attesa della quinta). In tutti gli altri casi tiene le carte, invece di spendere 10 PV su una mano che potrebbe non migliorare abbastanza.
+
 ## 1.4.7
 
 - Rifinitura: quando la cura è azzerata dalle cure consecutive (0%) e si sceglie Difesa, non parte più l animazione di guarigione (bagliore, suono, caraffa): la mano vince comunque il confronto, ma non viene mostrato alcun effetto curativo che in realtà non c è stato. Resta solo la scritta che avvisa che la cura non ha avuto effetto.

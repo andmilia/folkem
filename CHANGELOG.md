@@ -1,5 +1,13 @@
 # Changelog — Folk Em
 
+## 1.4.9
+
+- When sharing the game link (Facebook, WhatsApp, Telegram…), the preview now shows the Masks icon instead of a random image from the page. Added the missing social (Open Graph) tags.
+
+## 1.4.8
+
+- AI: now swaps a card only when it is genuinely worth it. The swap costs 10 HP, so the AI does it only when the expected gain beats that — in practice only to complete a Flush (4 cards of the same suit waiting for the fifth). In every other case it keeps its cards, instead of spending 10 HP on a hand that might not improve enough.
+
 ## 1.4.7
 
 - Polish: when healing is zeroed out by consecutive heals (0%) and you choose Defense, the healing animation (glow, sound, carafe) no longer plays: the hand still wins the showdown, but no healing effect is shown when none actually happened. Only the on-screen note that healing had no effect remains.
