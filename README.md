@@ -9,7 +9,7 @@
 and use Chrome's *"Add to Home screen"* — it installs as a standalone app (no address bar)
 thanks to `manifest.json` and the service worker.
 
-> **App link:** [https://manlyo666.github.io/folkem/](https://manlyo666.github.io/folkem/)
+> **App link:** [https://andmilia.github.io/folkem/](https://andmilia.github.io/folkem/)
 
 ---
 

@@ -9,7 +9,7 @@ napoletano da 40 carte, in stile Texas Hold'em.*
 Android e usa *"Aggiungi a schermata Home"* di Chrome — si installa come app a sé stante
 (senza barra dell'indirizzo) grazie a `manifest.json` e al service worker.
 
-> **Link app:** [https://manlyo666.github.io/folkem/](https://manlyo666.github.io/folkem/)
+> **Link app:** [https://andmilia.github.io/folkem/](https://andmilia.github.io/folkem/)
 
 ---
 
