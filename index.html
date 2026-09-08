@@ -136,7 +136,11 @@ body[data-portrait="1"] .log-box{height:13vh;font-size:3vw;flex-shrink:0}
 .credit-footer .credit-txt{color:var(--parch);font-family:var(--font-body);font-size:11px;letter-spacing:.02em;white-space:nowrap}
 body[data-portrait="1"] .credit-footer{margin-top:2vh}
 body[data-portrait="1"] .credit-footer .credit-txt{font-size:2.8vw}
-body[data-portrait="1"] .credit-footer .am-logo{width:6vw;height:6vw}.sign h1{font-family:var(--font-title);font-size:60px;color:var(--brass-hi);
+body[data-portrait="1"] .credit-footer .am-logo{width:6vw;height:6vw}
+/* watermark d'angolo nel tavolo: piccolo, molto trasparente, non intercetta i tocchi */
+.am-watermark{position:absolute;top:12px;right:12px;width:22px;height:22px;border-radius:50%;
+  opacity:.28;pointer-events:none;z-index:3}
+body[data-portrait="1"] .am-watermark{top:1.5vh;right:2.5vw;width:5.5vw;height:5.5vw}.sign h1{font-family:var(--font-title);font-size:60px;color:var(--brass-hi);
   text-shadow:0 3px 4px rgba(0,0,0,.9),0 2px 0 #000,0 0 28px rgba(255,150,60,.6),0 0 55px rgba(255,120,40,.35);line-height:1;letter-spacing:.02em}
 .sign .sub{color:var(--parch);font-size:16px;letter-spacing:.1em;margin-top:2px;font-family:var(--font-title);text-shadow:0 1px 3px rgba(0,0,0,.8)}
 .hr-brass{height:2px;border:0;margin:8px auto;max-width:340px;background:linear-gradient(90deg,transparent,var(--brass),transparent)}
@@ -728,6 +732,11 @@ body[data-portrait="1"] .lastcall-badge .lcb-n{font-size:5vw}
   <!-- ============ TAVOLO ============ -->
   <section id="screen-table" class="screen">
     <div class="menu-tools tools-left"><div class="icon-btn" id="table-opts" title="Opzioni">⚙</div></div>
+    <svg class="am-watermark" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="andmilia" aria-hidden="true">
+      <circle cx="100" cy="100" r="92" fill="#1a2740"/>
+      <text x="100" y="128" font-size="80" text-anchor="middle" fill="#ffffff"
+            font-family="'Space Grotesk','Segoe UI',sans-serif" font-weight="600" letter-spacing="-3">AM</text>
+    </svg>
 
     <!-- avversario in alto (in pvp: pulsanti ruotati) -->
     <div class="table-top">
@@ -4739,8 +4748,12 @@ const I18N = {
   }
 };
 
-const APP_VERSION="1.4.11";
+const APP_VERSION="1.4.12";
 const CHANGELOG=[
+  {v:"1.4.12", it:[
+    "Il monogramma AM ora compare anche durante la partita, come piccolo watermark semitrasparente nell angolo in alto a destra del tavolo: non copre carte né pulsanti e non intercetta i tocchi."],
+   en:[
+    "The AM monogram now also appears during play, as a small semi-transparent watermark in the top-right corner of the table: it doesn t cover cards or buttons and doesn t intercept taps."]},
   {v:"1.4.11", it:[
     "Aggiunta la firma dell autore: monogramma AM e credito «© 2026 andmilia · Folk Em · github.com/andmilia» in fondo al menu, più le note di copyright nel codice e il file di licenza (tutti i diritti riservati)."],
    en:[

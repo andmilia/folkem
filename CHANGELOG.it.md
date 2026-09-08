@@ -1,5 +1,9 @@
 # Diario di bordo — Folk Em
 
+## 1.4.12
+
+- Il monogramma AM ora compare anche durante la partita, come piccolo watermark semitrasparente nell angolo in alto a destra del tavolo: non copre carte né pulsanti e non intercetta i tocchi.
+
 ## 1.4.11
 
 - Aggiunta la firma dell autore: monogramma AM e credito «© 2026 andmilia · Folk Em · github.com/andmilia» in fondo al menu, più le note di copyright nel codice e il file di licenza (tutti i diritti riservati).

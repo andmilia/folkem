@@ -9,7 +9,7 @@
   totali o parziali, non autorizzati. La visibilità pubblica del codice non ne
   implica alcuna licenza d'uso.
 */
-const CACHE='folkem-v1.4.11';
+const CACHE='folkem-v1.4.12';
 const ASSETS=['./','./index.html','./manifest.json',
   './assets/bg.jpg','./assets/cardback.png','./assets/otri/otre.svg',
   './assets/icon-192.png','./assets/icon-512.png','./assets/ujack.svg','./assets/itflag.svg','./assets/victorian.woff2','./assets/isenheim.woff2','./assets/scar.woff2'];

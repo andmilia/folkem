@@ -1,5 +1,9 @@
 # Changelog — Folk Em
 
+## 1.4.12
+
+- The AM monogram now also appears during play, as a small semi-transparent watermark in the top-right corner of the table: it doesn t cover cards or buttons and doesn t intercept taps.
+
 ## 1.4.11
 
 - Added the author s signature: AM monogram and credit «© 2026 andmilia · Folk Em · github.com/andmilia» at the bottom of the menu, plus copyright notices in the code and the license file (all rights reserved).
