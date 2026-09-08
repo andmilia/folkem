@@ -1,5 +1,13 @@
 # Diario di bordo — Folk Em
 
+## 1.4.11
+
+- Aggiunta la firma dell autore: monogramma AM e credito «© 2026 andmilia · Folk Em · github.com/andmilia» in fondo al menu, più le note di copyright nel codice e il file di licenza (tutti i diritti riservati).
+
+## 1.4.10
+
+- Forgia, build salvate più comode: la build si carica da sola appena la scegli dal menu a tendina (niente più tasto Carica). Per eliminarne una, tienila premuta nel menu e conferma. Il tasto Salva ora ha l icona della piuma.
+
 ## 1.4.9
 
 - Quando si condivide il link del gioco (Facebook, WhatsApp, Telegram…), l anteprima ora mostra l icona delle Maschere invece di un immagine casuale della pagina. Aggiunti i tag social (Open Graph) mancanti.

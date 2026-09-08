@@ -1,5 +1,13 @@
 # Changelog — Folk Em
 
+## 1.4.11
+
+- Added the author s signature: AM monogram and credit «© 2026 andmilia · Folk Em · github.com/andmilia» at the bottom of the menu, plus copyright notices in the code and the license file (all rights reserved).
+
+## 1.4.10
+
+- Forge, saved builds made smoother: a build loads as soon as you pick it from the dropdown (no more Load button). To delete one, long-press it in the menu and confirm. The Save button now has a quill icon.
+
 ## 1.4.9
 
 - When sharing the game link (Facebook, WhatsApp, Telegram…), the preview now shows the Masks icon instead of a random image from the page. Added the missing social (Open Graph) tags.

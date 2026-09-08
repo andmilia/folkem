@@ -1,4 +1,15 @@
 <!DOCTYPE html>
+<!--
+  Folk 'Em — La Locanda delle Maschere
+  © 2026 andmilia — Tutti i diritti riservati / All rights reserved
+  Ideazione, regole e design: andmilia
+  https://github.com/andmilia
+
+  Questo progetto e i suoi contenuti (codice, regole, grafica, testi) sono opera di
+  andmilia. Ne sono vietati il riuso, la copia, la modifica e la redistribuzione,
+  totali o parziali, non autorizzati. La visibilità pubblica del codice non ne
+  implica alcuna licenza d'uso.
+-->
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -97,6 +108,9 @@ body[data-portrait="1"] .bc-stats .st span{font-size:2.2vw}
 body[data-portrait="1"] .bc-swap{font-size:2.6vw;padding:0.5vh 1vw;flex-shrink:0;margin-top:0.4vh}
 body[data-portrait="1"] #screen-setup > div:last-child{flex-shrink:0;padding-top:1vh;gap:2vw}
 body[data-portrait="1"] #screen-setup > div:last-child .btn{padding:1.6vh 6vw;font-size:4.4vw}
+body[data-portrait="1"] .saved-builds{flex-shrink:0;gap:1.5vw;margin-top:0.8vh}
+body[data-portrait="1"] .build-select{font-size:3vw;padding:0.8vh 2vw;max-width:38vw;flex:1 1 auto}
+body[data-portrait="1"] .saved-builds .btn.compact{padding:0.8vh 2.5vw;font-size:3vw}
 /* TAVOLO: 3 zone verticali che riempiono lo schermo, carte grandi in vw/vh */
 body[data-portrait="1"] #screen-table.active{padding:1vh 1.5vw;display:flex;flex-direction:column;height:100%}
 body[data-portrait="1"] .table-top,body[data-portrait="1"] .table-bottom{gap:0.6vh;flex-shrink:0}
@@ -117,7 +131,12 @@ body[data-portrait="1"] .log-box{height:13vh;font-size:3vw;flex-shrink:0}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
 
 .sign{text-align:center;margin:6px 0 4px}
-.sign h1{font-family:var(--font-title);font-size:60px;color:var(--brass-hi);
+.credit-footer{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;opacity:.55}
+.credit-footer .am-logo{width:26px;height:26px;flex-shrink:0;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,.6)}
+.credit-footer .credit-txt{color:var(--parch);font-family:var(--font-body);font-size:11px;letter-spacing:.02em;white-space:nowrap}
+body[data-portrait="1"] .credit-footer{margin-top:2vh}
+body[data-portrait="1"] .credit-footer .credit-txt{font-size:2.8vw}
+body[data-portrait="1"] .credit-footer .am-logo{width:6vw;height:6vw}.sign h1{font-family:var(--font-title);font-size:60px;color:var(--brass-hi);
   text-shadow:0 3px 4px rgba(0,0,0,.9),0 2px 0 #000,0 0 28px rgba(255,150,60,.6),0 0 55px rgba(255,120,40,.35);line-height:1;letter-spacing:.02em}
 .sign .sub{color:var(--parch);font-size:16px;letter-spacing:.1em;margin-top:2px;font-family:var(--font-title);text-shadow:0 1px 3px rgba(0,0,0,.8)}
 .hr-brass{height:2px;border:0;margin:8px auto;max-width:340px;background:linear-gradient(90deg,transparent,var(--brass),transparent)}
@@ -176,6 +195,10 @@ body[data-portrait="1"] .icon-btn{width:11vw;height:11vw;font-size:5.5vw}
 
 /* ===== SETUP 3x3 ===== */
 .setup-intro{color:var(--parch-dim);font-size:11px;line-height:1.4;margin:5px 0 8px;text-align:center;max-width:640px;font-family:var(--font-body)}
+.saved-builds{display:flex;align-items:center;gap:8px;margin-top:10px;flex-wrap:wrap;justify-content:center}
+.build-select{background:rgba(20,12,7,.85);color:var(--parch);border:1px solid var(--wood-lit);border-radius:8px;
+  padding:6px 10px;font-family:var(--font-body);font-size:13px;max-width:200px}
+.btn.compact{padding:6px 12px;font-size:12px}
 .build-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%;max-width:660px}
 .build-card{background:rgba(20,12,7,.72);border:1px solid var(--wood-lit);border-radius:10px;
   padding:7px;display:flex;align-items:center;gap:8px}
@@ -677,6 +700,14 @@ body[data-portrait="1"] .lastcall-badge .lcb-n{font-size:5vw}
       <button class="btn mode-btn" id="mode-pvp"><span class="mb-ico">👥</span><span class="mb-txt"><b data-i18n="modePvP">PvP offline</b><span data-i18n="modePvPd">Un solo telefono al centro, 1v1</span></span></button>
       <button class="btn mode-btn" id="mode-online"><span class="mb-ico">🌐</span><span class="mb-txt"><b data-i18n="modeOnline">PvP online</b><span data-i18n="modeOnlined">Gioca in rete, 1v1</span></span></button>
     </div>
+    <div class="credit-footer">
+      <svg class="am-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="andmilia">
+        <circle cx="100" cy="100" r="92" fill="#1a2740"/>
+        <text x="100" y="128" font-size="80" text-anchor="middle" fill="#ffffff"
+              font-family="'Space Grotesk','Segoe UI',sans-serif" font-weight="600" letter-spacing="-3">AM</text>
+      </svg>
+      <span class="credit-txt">© 2026 andmilia · Folk 'Em · github.com/andmilia</span>
+    </div>
   </section>
 
   <!-- ============ SETUP 3x3 ============ -->
@@ -684,6 +715,10 @@ body[data-portrait="1"] .lastcall-badge .lcb-n{font-size:5vw}
     <div class="sign"><h1 style="font-size:34px" data-i18n="setupTitle">Forgia la tua build</h1></div>
     <p class="setup-intro" data-i18n="setupIntro"></p>
     <div id="buildGrid" class="build-grid3"></div>
+    <div class="saved-builds" id="savedBuildsRow">
+      <select id="buildSelect" class="build-select" aria-label="Build salvate"></select>
+      <button class="btn ghost compact" id="build-save" data-i18n="buildSave">🪶 Salva</button>
+    </div>
     <div style="margin-top:12px;display:flex;gap:10px">
       <button class="btn ghost" id="setup-back" data-i18n="back">Indietro</button>
       <button class="btn primary" id="setup-start" data-i18n="startBtn">Al tavolo</button>
@@ -4565,6 +4600,7 @@ const I18N = {
     swap:"Cambia (−10)", reveal:"Rivela il Destino", summon:"Evoca Maschera", summonFlash:"Le Maschere si destano…", blindChoice:"Scegli alla cieca: Attacco o Difesa?", p1ChooseBlind:"Giocatore 1: scegli alla cieca (Attacco o Difesa).",
     attack:"⚔ Attacco", defend:"🛡 Difesa", again:"Nuova partita", toMenu:"Modalità",
     invert:"⇄ Inverti", inverted:"↺ Invertito", fixed:"🔒 Fisso", atkS:"Atk", defS:"Dif",
+    buildSave:"🪶 Salva", buildNone:"— build salvate —", buildPrompt:"Nome della build da salvare:", buildDelConfirm:(n)=>`Eliminare la build "${n}"?`,
     roundMove:r=>`Round ${r} — la tua mossa.`,
     p2Move:"Round — mossa del Giocatore 2.",
     tapSwap:"Tocca la carta da scartare (−10 PV).",
@@ -4650,6 +4686,7 @@ const I18N = {
     swap:"Swap (−10)", reveal:"Reveal Fate", summon:"Summon Mask", summonFlash:"The Masks awaken…", blindChoice:"Choose blind: Attack or Defend?", p1ChooseBlind:"Player 1: choose blind (Attack or Defend).",
     attack:"⚔ Attack", defend:"🛡 Defend", again:"New game", toMenu:"Modes",
     invert:"⇄ Swap", inverted:"↺ Swapped", fixed:"🔒 Fixed", atkS:"Atk", defS:"Def",
+    buildSave:"🪶 Save", buildNone:"— saved builds —", buildPrompt:"Name for the build to save:", buildDelConfirm:(n)=>`Delete build "${n}"?`,
     roundMove:r=>`Round ${r} — your move.`,
     p2Move:"Round — Player 2's move.",
     tapSwap:"Tap the card to discard (−10 HP).",
@@ -4702,8 +4739,16 @@ const I18N = {
   }
 };
 
-const APP_VERSION="1.4.9";
+const APP_VERSION="1.4.11";
 const CHANGELOG=[
+  {v:"1.4.11", it:[
+    "Aggiunta la firma dell autore: monogramma AM e credito «© 2026 andmilia · Folk Em · github.com/andmilia» in fondo al menu, più le note di copyright nel codice e il file di licenza (tutti i diritti riservati)."],
+   en:[
+    "Added the author s signature: AM monogram and credit «© 2026 andmilia · Folk Em · github.com/andmilia» at the bottom of the menu, plus copyright notices in the code and the license file (all rights reserved)."]},
+  {v:"1.4.10", it:[
+    "Forgia, build salvate più comode: la build si carica da sola appena la scegli dal menu a tendina (niente più tasto Carica). Per eliminarne una, tienila premuta nel menu e conferma. Il tasto Salva ora ha l icona della piuma."],
+   en:[
+    "Forge, saved builds made smoother: a build loads as soon as you pick it from the dropdown (no more Load button). To delete one, long-press it in the menu and confirm. The Save button now has a quill icon."]},
   {v:"1.4.9", it:[
     "Quando si condivide il link del gioco (Facebook, WhatsApp, Telegram…), l anteprima ora mostra l icona delle Maschere invece di un immagine casuale della pagina. Aggiunti i tag social (Open Graph) mancanti."],
    en:[
@@ -5198,6 +5243,48 @@ const UI = (() => {
     grid.querySelectorAll('[data-mask]').forEach(b=>b.addEventListener('click',()=>{
       const iv=currentInv(); iv[b.dataset.mask]=!iv[b.dataset.mask]; renderSetup();
     }));
+    refreshBuildSelect();
+  }
+
+  // ===== BUILD SALVATE (persistono in localStorage) =====
+  const BUILDS_KEY='folkem_builds';
+  function savedBuilds(){
+    try{ const raw=localStorageSafe(BUILDS_KEY); const o=raw?JSON.parse(raw):{}; return (o&&typeof o==='object')?o:{}; }
+    catch(e){ return {}; }
+  }
+  function writeBuilds(o){ try{ localStorageSafe(BUILDS_KEY, JSON.stringify(o)); }catch(e){} }
+  function refreshBuildSelect(){
+    const sel=$('buildSelect'); if(!sel) return;
+    const b=savedBuilds(); const names=Object.keys(b).sort();
+    const prev=sel.value;
+    sel.innerHTML = `<option value="">${T().buildNone}</option>` +
+      names.map(n=>`<option value="${n.replace(/"/g,'&quot;')}">${n}</option>`).join('');
+    if(names.includes(prev)) sel.value=prev;
+  }
+  function saveCurrentBuild(){
+    const name=(prompt(T().buildPrompt)||'').trim();
+    if(!name) return;
+    const b=savedBuilds();
+    // salvo solo le maschere invertite (true), copia pulita
+    const inv=currentInv(); const snap={};
+    for(const k in inv) if(inv[k]) snap[k]=true;
+    b[name]=snap; writeBuilds(b);
+    refreshBuildSelect(); const sel=$('buildSelect'); if(sel) sel.value=name;
+  }
+  function loadSelectedBuild(){
+    const sel=$('buildSelect'); if(!sel||!sel.value) return;
+    const b=savedBuilds(); const snap=b[sel.value]; if(!snap) return;
+    const chosen=sel.value;
+    // applico alla build corrente (azzero e riscrivo)
+    const fresh={}; for(const k in snap) fresh[k]=true;
+    if(setupTarget==='me') playerInv=fresh; else pvpP2Inv=fresh;
+    renderSetup();                              // ridisegna la griglia con le inversioni caricate
+    const s2=$('buildSelect'); if(s2) s2.value=chosen;   // mantieni la build scelta nel menu
+  }
+  function delSelectedBuild(){
+    const sel=$('buildSelect'); if(!sel||!sel.value) return;
+    if(!confirm(T().buildDelConfirm(sel.value))) return;   // conferma: il tieni-premuto è facile da attivare
+    const b=savedBuilds(); delete b[sel.value]; writeBuilds(b); refreshBuildSelect();
   }
 
   /* ================= OTRE (HP) ================= */
@@ -6401,6 +6488,22 @@ const UI = (() => {
       if(mode==='pvp_local'&&setupTarget==='ai'){ setupTarget='me'; renderSetup(); }  // torna a P1
       else showScreen('screen-menu');
     });
+    $('build-save')&&$('build-save').addEventListener('click', saveCurrentBuild);
+    // caricamento AUTOMATICO quando selezioni una build dal menu
+    $('buildSelect')&&$('buildSelect').addEventListener('change', loadSelectedBuild);
+    // TIENI PREMUTO sul menu per eliminare la build selezionata (con conferma)
+    (function(){
+      const sel=$('buildSelect'); if(!sel) return;
+      let timer=null;
+      const startPress=()=>{ timer=setTimeout(delSelectedBuild, 650); };
+      const cancelPress=()=>{ if(timer){ clearTimeout(timer); timer=null; } };
+      sel.addEventListener('touchstart', startPress, {passive:true});
+      sel.addEventListener('touchend', cancelPress);
+      sel.addEventListener('touchmove', cancelPress);
+      sel.addEventListener('mousedown', startPress);
+      sel.addEventListener('mouseup', cancelPress);
+      sel.addEventListener('mouseleave', cancelPress);
+    })();
     $('setup-start').addEventListener('click',()=>{
       if(mode==='pvp_online'){ GameOnline.finishSetup(); }              // online: invia build, attende avversario
       else if(mode==='pvp_local'&&setupTarget==='me'){ setupTarget='ai'; renderSetup(); }   // passa a setup P2

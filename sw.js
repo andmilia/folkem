@@ -1,4 +1,15 @@
-const CACHE='folkem-v1.4.9';
+/*
+  Folk 'Em — La Locanda delle Maschere
+  © 2026 andmilia — Tutti i diritti riservati / All rights reserved
+  Ideazione, regole e design: andmilia
+  https://github.com/andmilia
+
+  Questo progetto e i suoi contenuti (codice, regole, grafica, testi) sono opera di
+  andmilia. Ne sono vietati il riuso, la copia, la modifica e la redistribuzione,
+  totali o parziali, non autorizzati. La visibilità pubblica del codice non ne
+  implica alcuna licenza d'uso.
+*/
+const CACHE='folkem-v1.4.11';
 const ASSETS=['./','./index.html','./manifest.json',
   './assets/bg.jpg','./assets/cardback.png','./assets/otri/otre.svg',
   './assets/icon-192.png','./assets/icon-512.png','./assets/ujack.svg','./assets/itflag.svg','./assets/victorian.woff2','./assets/isenheim.woff2','./assets/scar.woff2'];
